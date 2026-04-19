@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Portfolio | Jit Mukherjee</title>
+    <style>
+        :root {
+            --primary: #0f172a; /* Deep Indigo for strong elements */
+            --accent: #e11d48; /* Vibrant Crimson for interactions */
+            --accent-light: #f43f5e; /* Lighter Crimson for highlights */
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --bg-body: #0a0e17; /* Dark charcoal for premium depth */
+            --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 1. Global Reset & Body */
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            margin: 0;
+            padding: 30px 15px; /* Comfortable padding on mobile */
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 2. Page Load Animation */
+        @keyframes containerFadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            animation: containerFadeUp 0.8s ease-out; /* Main animation */
+        }
+
+        /* 3. High-End Card Design */
+        .profile-card, .content-section {
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.4);
+            transition: var(--transition);
+        }
+
+        .profile-card:hover, .content-section:hover {
+            transform: translateY(-5px); /* Gentle lift on hover */
+            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Profile Card Layout */
+        .profile-card {
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle Background Gradient for Card */
+        .profile-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(225,29,72,0.03) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+
+        /* 4. Photo Graphics & Animation */
+        .photo-container {
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            border-radius: 50px; /* Modern squircle shape */
+            border: 2px solid #e2e8f0;
+            padding: 8px;
+            background: #f8fafc;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        /* Crimson Border Interaction */
+        .photo-container:hover {
+            border-color: var(--accent);
+            transform: scale(1.05) rotate(3deg); /* Scale & spin */
+            background: var(--white);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 40px;
+        }
+
+        .details-header {
+            flex-grow: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .details-header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
+
+        .details-header p.subtitle {
+            margin: 5px 0 20px 0;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+
+        /* 5. Info Grid Graphics */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .info-item {
+            font-size: 0.9rem;
+            background: #f1f5f9;
+            padding: 10px 15px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: translateX(3px); /* Lateral slide */
+        }
+
+        .info-item strong {
+            color: inherit;
+        }
+
+        /* Institute Section Design */
+        .content-section {
+            padding: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-top: 0;
+        }
+
+        /* Stylized Vertical Bar Graphics */
+        h2::before {
+            content: "";
+            width: 6px;
+            height: 32px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+            border-radius: 10px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, rgba(226, 232, 240, 0), rgba(226, 232, 240, 1) 20%, rgba(226, 232, 240, 1) 80%, rgba(226, 232, 240, 0));
+            margin: 25px 0;
+        }
+
+        /* 6. Table Graphics and Mobile Solution */
+        .table-wrapper {
+            margin-top: 25px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.02);
+        }
+
+        table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: separate; /* Required for border-radius on rows */
+            border-spacing: 0;
+            background: var(--white);
+        }
+
+        th {
+            background: #f8fafc;
+            padding: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            text-align: left;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        th:first-child { border-top-left-radius: 16px; }
+        th:last-child { border-top-right-radius: 16px; }
+
+        td {
+            padding: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+
+        /* Row Highlight Graphic */
+        tr:hover td { 
+            background: #fff1f2; /* Subtle Crimson background */
+        }
+
+        /* 7. Animated Link Design */
+        .stream-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 2px;
+            transition: var(--transition);
+        }
+
+        /* Sliding Underline Animation */
+        .stream-link::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .stream-link:hover::after {
+            width: 100%;
+        }
+
+        .stream-link:hover {
+            color: var(--accent-light);
+        }
+
+        .note-text {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* 8. Responsive Adjustments (Mobile Optimized) */
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+
+            .profile-card { 
+                flex-direction: column; 
+                text-align: center; 
+                padding: 30px 20px;
+                gap: 25px;
+            }
+
+            .details-header h1 {
+                font-size: 2.1rem;
+                letter-spacing: -1px;
+            }
+
+            .info-grid { 
+                grid-template-columns: 1fr; 
+                text-align: left;
+            }
+
+            .photo-container { 
+                margin: 0 auto; 
+                width: 130px; 
+                height: 130px;
+                border-radius: 40px;
+            }
+            
+            .content-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <section class="profile-card">
+            <div class="photo-container" title="Click to interact">
+                <img src="j.jpg" alt="Jit Mukherjee">
+            </div>
+            
+            <div class="details-header">
+                <h1>Jit Mukherjee</h1>
+                <p class="subtitle">Student | Session 2025</p>
+                <hr>
+                <div class="info-grid">
+                    <div class="info-item"><strong>Email:</strong> Jitmukherjee187@gmail.com</div>
+                    <div class="info-item"><strong>Age:</strong> 22 Years</div>
+                    <div class="info-item"><strong>Location:</strong> Jadurhati, Baduria</div>
+                    <div class="info-item"><strong>Pincode:</strong> 743293</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>About My Institute</h2>
+            <p><strong>Barasat Government College</strong> stands as a pillar of academic excellence. This interface integrates modern graphics and responsive design for an optimal viewing experience across all devices.</p>
+
+            <hr>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 70px;">S.No</th>
+                            <th>Academic Stream</th>
+                            <th>Description & Expert Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td><a href="#" target="_blank" class="stream-link">Pure Science</a></td>
+                            <td>
+                                Advanced Mathematics and Physical sciences core studies.
+                                <span class="note-text">Note: Ideal for research and technology pathways.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td><a href="#" target="_blank" class="stream-link">Humanities</a></td>
+                            <td>
+                                Exploration of History, Political Science, and Literature.
+                                <span class="note-text">Note: Develops critical perspective and social analysis.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td><a href="#" target="_blank" class="stream-link">Biological Science</a></td>
+                            <td>
+                                Comprehensive analysis of Zoology, Botany, and Physiology.
+                                <span class="note-text">Note: Foundation for medical and bio-tech careers.</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 15px; text-align: center;">(Horizontal swipe table on mobile to view description)</p>
+        </section>
+    </div>
+
+</body>
+</html>
